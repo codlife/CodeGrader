@@ -17,3 +17,6 @@
 /tmp
 #ignore Gemfile
 Gemfile
+suploadfile_n.rhtml
+suploadfile_o.rhtml
+
