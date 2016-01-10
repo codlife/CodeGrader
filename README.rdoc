@@ -26,6 +26,7 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+***************************************************************
 文件上传：
 学生上传地址
 localhost:3000/upload/supload
@@ -35,3 +36,4 @@ localhost:3000/upload/tupload
 public/data/student
 老师文件存储地址
 public/data/teacher
+***************************************************************
