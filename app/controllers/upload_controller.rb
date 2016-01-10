@@ -1,6 +1,6 @@
 class UploadController < ApplicationController
   def index
-       render :file => 'upload/uploadfile.rhtml'
+       render :file => 'upload/suploadfile.rhtml'
        puts('index')
   end
   def supload
