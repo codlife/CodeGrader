@@ -1,0 +1,9 @@
+<h1>Student File Upload</h1>
+<hr style=" height:2px;border:none;border-top:2px dotted green  " />
+<%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
+<p><label for="upload_file">Select File</label> : 
+<%= file_field 'upload', 'datafile' %></p>
+<%=hidden_field_tag :type, :'student' %>
+<%= submit_tag "Upload" %>
+<%= form_tag %>
+<hr style=" height:2px;border:none;border-top:2px dotted green  " />
