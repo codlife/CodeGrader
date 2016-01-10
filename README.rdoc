@@ -45,4 +45,13 @@ Please feel free to use a different markup language if you do not plan to run
 
 **public/data/teacher
 
-***************************************************************
+**************************************************************
+
+-----------------setup steps-----------------
+1.clone
+	When you have open this doc,obviously you have clone this project
+2.run "bundle install"
+3.run "rake db:migrate"
+4.run "rails s" ,start server
+5.open url"localhost:3000" by brower
+-----------------------end---------------
