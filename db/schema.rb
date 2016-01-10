@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109132011) do
+ActiveRecord::Schema.define(version: 20160110062554) do
 
   create_table "data_files", force: :cascade do |t|
     t.datetime "created_at", null: false
