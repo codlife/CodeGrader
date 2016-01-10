@@ -35,7 +35,12 @@
         <td class=" ">HW1. Ruby Advance</td>
         <td class=" ">2015.1.10-2016.2.12</td>
         <td class=" ">
-          <button type="button" class="btn btn-info">提交作业</button>
+          <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
+          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
+    float: left;" %></p>
+          <%=hidden_field_tag :type, :'student' %>
+          <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
+          <%= form_tag %>
         </td>
         <td class=" ">
           <button type="button" class="btn btn-danger">查看报告</button>
@@ -47,7 +52,8 @@
         <td class=" ">2015.1.10-2016.2.12</td>
         <td class=" ">
           <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
-          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info" %></p>
+          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
+    float: left;" %></p>
           <%=hidden_field_tag :type, :'student' %>
           <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
           <%= form_tag %>
@@ -63,7 +69,12 @@
         <td class=" ">HW3. rottonpotatoes</td>
         <td class=" ">2015.1.10-2016.2.12</td>
         <td class=" ">
-          <button type="button" class="btn btn-info">提交作业</button>
+          <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
+          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
+    float: left;" %></p>
+          <%=hidden_field_tag :type, :'student' %>
+          <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
+          <%= form_tag %>
         </td>
         <td class=" ">
           <button type="button" class="btn btn-danger">查看报告</button>
