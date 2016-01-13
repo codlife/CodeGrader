@@ -1,3 +1,4 @@
+require_relative "../../lib/grader/rspec_grader.rb"
 class UploadController < ApplicationController
   def index
        render :file => 'upload/suploadfile.rhtml'
@@ -20,5 +21,12 @@ class UploadController < ApplicationController
     end
      
   end
+  def showReport
+      @data=compute_grade("public/data/student/ruby_intro.rb","public/data/teacher/part1_spec.rb")
+    # compute_grade("../../public/data/student/ruby_intro.rb","../../public/data/teacher/part1_spec.rb")
+      puts(@data)
+        render :text => @data
+  end
+
 end
 

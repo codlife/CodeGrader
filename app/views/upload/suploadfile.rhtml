@@ -35,15 +35,19 @@
         <td class=" ">HW1. Ruby Advance</td>
         <td class=" ">2015.1.10-2016.2.12</td>
         <td class=" ">
-          <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
-          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
-    float: left;" %></p>
+         <%= form_tag ({:action => 'uploadFile'}), :multipart => true %>  
+          
+          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"float: left;" %></p>
           <%=hidden_field_tag :type, :'student' %>
           <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
-          <%= form_tag %>
+          <%= form_tag%>
         </td>
+        
+
         <td class=" ">
-          <button type="button" class="btn btn-danger">查看报告</button>
+     <!--    这个地方我纠结了2h ，可悲，找不到解决方法，就是这个表单会受到上面的表单的影响，这次提交实际提交被上面这个表单截获了
+      routes.rb  post 'upload/showReport'         -->
+           <button type="button" class="btn btn-danger">查看报告</button>  
         </td>
       </tr>
       <tr>

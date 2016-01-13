@@ -68,5 +68,5 @@ require_relative '../formatter/json_points_formatter'
 
 #end
 
-compute_grade("../../public/data/student/ruby_intro.rb","../../public/data/teacher/part1_spec.rb")
+ 
 #  compute_grade("./ruby_intro.rb","./part1_spec.rb")
