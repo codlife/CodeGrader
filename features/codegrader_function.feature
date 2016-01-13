@@ -3,8 +3,8 @@ Feature:CodeGrader functional testing
    This feature is tested as a function of the overall test, as the ultimate inheritance of the test. In order to test whether the overall function is passed. As a stakeholder, the test needs to be tested separately for students and teachers, as well as the integration test
   
   @stu_uplode
-  Scenario Outline: Students upload task code
-     Given Student write code stored in the local
+  Scenario Outline: Students upload task CodeGrader
+     Given Student write code "<homework>" stored in the local
      When Student chose "<homework>"
      And  Student click "uplode" button
      Then The uplode button in Student's view should changed as "uploded" ,and the code should be stored into file server,return uplode success 
