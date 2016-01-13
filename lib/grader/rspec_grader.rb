@@ -1,11 +1,15 @@
 require 'rspec'
 require 'json'
 require 'tempfile'
+require_relative 'auto_grader'
 require_relative '../formatter/json_points_formatter'
 
-module Grader
+#module Grader
 
-class RspecGrader < AutoGrader
+#class RspecGrader < AutoGrader
+  
+  def initialize
+  end
 
   def compute_grade(student_file_path,spec_file_path)
     compute_points(join_student_file_and_spec_file(student_file_path,spec_file_path)) 
@@ -60,9 +64,9 @@ class RspecGrader < AutoGrader
     return output_hash
   end
 
-end
+#end
 
-end
+#end
 
-    
-  compute_grade("./ruby_intro.rb","./part1_spec.rb")
+compute_grade("../../public/data/student/ruby_intro.rb","../../public/data/teacher/part1_spec.rb")
+#  compute_grade("./ruby_intro.rb","./part1_spec.rb")
