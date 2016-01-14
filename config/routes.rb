@@ -1,62 +1,125 @@
 Rails.application.routes.draw do
-  get 'upload/index'
-  get 'upload/supload'
-  get 'upload/tupload'
-  post 'upload/uploadFile'
+  # Resources for testing
+  resources :users, only: [:index] do
+    member do
+      get :expire
+      get :accept
+      get :edit_form
+      put :update_form
+    end
 
+    authenticate do
+      post :exhibit, on: :member
+    end
+  end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :admins, only: [:index]
 
-  # You can have the root of your site routed with "root"
-  root 'upload#index'
+  # Users scope
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  devise_for :user_on_main_apps,
+    class_name: 'UserOnMainApp',
+    router_name: :main_app,
+    module: :devise
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  devise_for :user_on_engines,
+    class_name: 'UserOnEngine',
+    router_name: :fake_engine,
+    module: :devise
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  devise_for :user_without_email,
+    class_name: 'UserWithoutEmail',
+    router_name: :main_app,
+    module: :devise
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  as :user do
+    get "/as/sign_in", to: "devise/sessions#new"
+  end
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  get "/sign_in", to: "devise/sessions#new"
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  # Routes for custom controller testing
+  devise_for :user, only: [:registrations], controllers: { registrations: "custom/registrations" }, as: :custom, path: :custom
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  # Admin scope
+  devise_for :admin, path: "admin_area", controllers: { sessions: :"admins/sessions" }, skip: :passwords
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  get "/admin_area/home", to: "admins#index", as: :admin_root
+  get "/anywhere", to: "foo#bar", as: :new_admin_password
+
+  authenticate(:admin) do
+    get "/private", to: "home#private", as: :private
+  end
+
+  authenticate(:admin, lambda { |admin| admin.active? }) do
+    get "/private/active", to: "home#private", as: :private_active
+  end
+
+  authenticated :admin do
+    get "/dashboard", to: "home#admin_dashboard"
+  end
+
+  authenticated :admin, lambda { |admin| admin.active? } do
+    get "/dashboard/active", to: "home#admin_dashboard"
+  end
+
+  authenticated do
+    get "/dashboard", to: "home#user_dashboard"
+  end
+
+  unauthenticated do
+    get "/join", to: "home#join"
+  end
+
+  # Routes for constraints testing
+  devise_for :headquarters_admin, class_name: "Admin", path: "headquarters", constraints: {host: /192\.168\.1\.\d\d\d/}
+
+  constraints(host: /192\.168\.1\.\d\d\d/) do
+    devise_for :homebase_admin, class_name: "Admin", path: "homebase"
+  end
+
+  scope(subdomain: 'sub') do
+    devise_for :subdomain_users, class_name: "User", only: [:sessions]
+  end
+
+  devise_for :skip_admin, class_name: "Admin", skip: :all
+
+  # Routes for format=false testing
+  devise_for :htmlonly_admin, class_name: "Admin", skip: [:confirmations, :unlocks], path: "htmlonly_admin", format: false, skip_helpers: [:confirmations, :unlocks]
+  devise_for :htmlonly_users, class_name: "User", only: [:confirmations, :unlocks], path: "htmlonly_users", format: false, skip_helpers: true
+
+  # Other routes for routing_test.rb
+  devise_for :reader, class_name: "User", only: :passwords
+
+  scope host: "sub.example.com" do
+    devise_for :sub_admin, class_name: "Admin"
+  end
+
+  namespace :publisher, path_names: { sign_in: "i_dont_care", sign_out: "get_out" } do
+    devise_for :accounts, class_name: "Admin", path_names: { sign_in: "get_in" }
+  end
+
+  scope ":locale", module: :invalid do
+    devise_for :accounts, singular: "manager", class_name: "Admin",
+      path_names: {
+        sign_in: "login", sign_out: "logout",
+        password: "secret", confirmation: "verification",
+        unlock: "unblock", sign_up: "register",
+        registration: "management",
+        cancel: "giveup", edit: "edit/profile"
+      }, failure_app: lambda { |env| [404, {"Content-Type" => "text/plain"}, ["Oops, not found"]] }, module: :devise
+  end
+
+  namespace :sign_out_via, module: "devise" do
+    devise_for :deletes, sign_out_via: :delete, class_name: "Admin"
+    devise_for :posts, sign_out_via: :post, class_name: "Admin"
+    devise_for :delete_or_posts, sign_out_via: [:delete, :post], class_name: "Admin"
+  end
+
+  get "/set", to: "home#set"
+  get "/unauthenticated", to: "home#unauthenticated"
+  get "/custom_strategy/new"
+
+  root to: "home#index", via: [:get, :post]
 end
