@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>作业提交</title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -17,76 +17,39 @@
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
- <h1 style="margin-left:20px;">CodeGrader<small>     online code grader tool</small></h1>
 
- <table class="table table-striped table-hover " style="margin-top: 60px;  ">
-        <thead>
-        <tr>
-         <th>编号</th>
-         <th>作业名称</th>
-         <th>发布时间</th>
-         <th>提交作业</th>
-         <th>查看报告</th>
-         </tr>
-      </thead>
-       <tr>
-        <td class="active">01</td>
-        <td class=" ">HW1. Ruby Advance</td>
-        <td class=" ">2015.1.10-2016.2.12</td>
-        <td class=" ">
-         <%= form_tag ({:action => 'uploadFile'}), :multipart => true %>  
-          
-          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"float: left;" %></p>
+  <body style=" background-color: #EAEBEC;">
+    <header>
+      <img alt="Icon" src="/assets/u3.png" style="width:100%"/>     
+    </header>
+     
+    <div id="left" style="width: 33%;float: left;">
+      <img alt="Icon" src="/assets/u1.png" style="width:90%"/>
+    </div>
+    <div id="right" style="width: 67%;float: right; background-color: #FFFFFF;">
+      <div >
+        <img  src="/assets/u7.png" style="width: 90%;margin: 15px;"/>
+        <img  src="/assets/u9.png" style="width: 90%;margin: 15px;"/>
+      </div>
+      <span style="display: block;width: 90%;background-color: #EAEBEC;margin: 17px;"> 作业提交</span>
+      <span style="margin-left: 16px;">提交描述</span>
+      <textarea rows="3" cols="20" style="margin: 19px;width: 89%;height: 70px;">
+        CodeGrader是一个在线代码测试平台
+      </textarea>
+<p>
+      <span style="margin-left: 16px;">代码提交</span>
+      <%= form_tag ({:action => 'uploadFile'}), :multipart => true %>  
+          <%= file_field 'upload', 'datafile' ,:class => "btn  " %></p>
           <%=hidden_field_tag :type, :'student' %>
-          <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
+          <p>
+          <%= submit_tag "提交作业" ,:class => "btn btn-primary" ,:style=>"margin-left:15px"%>
           <%= form_tag%>
-        </td>
-        
+    </div>
 
-        <td class=" ">
-     <!--    这个地方我纠结了2h ，可悲，找不到解决方法，就是这个表单会受到上面的表单的影响，这次提交实际提交被上面这个表单截获了
-      routes.rb  post 'upload/showReport'         -->
-           <button type="button" class="btn btn-danger">查看报告</button>  
-        </td>
-      </tr>
-      <tr>
-        <td class="active">02</td>
-        <td class=" ">HW2. Ruby info and read</td>
-        <td class=" ">2015.1.10-2016.2.12</td>
-        <td class=" ">
-          <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
-          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
-    float: left;" %></p>
-          <%=hidden_field_tag :type, :'student' %>
-          <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
-          <%= form_tag %>
-         <!--  <button type="button" class="btn btn-info">
-            提交作业</button> -->
-        </td>
-        <td class=" ">
-          <button type="button" class="btn btn-danger">查看报告</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="active">03</td>
-        <td class=" ">HW3. rottonpotatoes</td>
-        <td class=" ">2015.1.10-2016.2.12</td>
-        <td class=" ">
-          <%= form_tag ({:action => 'uploadFile'} ), :multipart => true %>
-          <%= file_field 'upload', 'datafile' ,:class => "btn btn-info",:style=>"
-    float: left;" %></p>
-          <%=hidden_field_tag :type, :'student' %>
-          <%= submit_tag "提交作业" ,:class => "btn btn-primary" %>
-          <%= form_tag %>
-        </td>
-        <td class=" ">
-          <button type="button" class="btn btn-danger">查看报告</button>
-        </td>
-      </tr>
-      </table>
-    
-</table>
+  <footer>
+    <img  src="/assets/u28.png" style="width: 100%; "/>
+  </footer>
+ 
 
  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

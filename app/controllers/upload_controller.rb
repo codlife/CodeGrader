@@ -17,10 +17,18 @@ class UploadController < ApplicationController
         render :text => 'upload failed!'
     else
       post = DataFile.save(params[:upload],params[:type])
-      render :text => 'upload successfully!'
+      # render :text => 'upload successfully!'
+      redirect_to :action => 'viewhome'
     end
      
   end
+
+  def viewhome
+    render :file => 'upload/viewhome.rhtml'
+    
+  end
+
+
   def showReport
       @data=compute_grade("public/data/student/ruby_intro.rb","public/data/teacher/part1_spec.rb")
     # compute_grade("../../public/data/student/ruby_intro.rb","../../public/data/teacher/part1_spec.rb")
