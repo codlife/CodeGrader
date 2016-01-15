@@ -33,6 +33,7 @@ class UploadController < ApplicationController
       @data=compute_grade("public/data/student/ruby_intro.rb","public/data/teacher/part1_spec.rb")
     # compute_grade("../../public/data/student/ruby_intro.rb","../../public/data/teacher/part1_spec.rb")
       puts(@data)
+    puts("--------------------------------------")
         render :text => @data
   end
 
