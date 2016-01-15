@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post "upload/showReport"
 get "upload/viewhome" =>"upload#viewhome" 
+get "upload/tuploadfile" =>"upload#tupload" 
 
 resources :grader
 

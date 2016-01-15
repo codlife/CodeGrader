@@ -37,7 +37,7 @@
         CodeGrader是一个在线代码测试平台
       </textarea>
 <p>
-      <span style="margin-left: 16px;">代码提交</span>
+      <span style="margin-left: 16px;">属性设置</span>
       <%= form_tag ({:action => 'uploadFile'}), :multipart => true %>  
           <%= file_field 'upload', 'datafile' ,:class => "btn  " %></p>
           <%=hidden_field_tag :type, :'student' %>
