@@ -34,7 +34,6 @@ gem 'execjs'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-    gem 'sqlite3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,6 +43,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+    gem 'sqlite3'
 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -51,7 +51,7 @@ group :development do
 end
  group :production do 
    gem 'rspec','>=3.3.0'
-   #gem 'postgres'
+   gem 'postgres'
 
 end
 
