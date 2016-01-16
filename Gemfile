@@ -1,6 +1,5 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
-gem 'rspec','>=3.3.0'
 gem 'json','>=1.8.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -49,6 +48,8 @@ group :development do
   gem 'spring'
 end
  group :production do 
+   gem 'rspec','>=3.3.0'
+
    gem 'postgres'
 end
 
