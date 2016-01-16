@@ -49,6 +49,6 @@ group :development do
   gem 'spring'
 end
  group :production do 
-   gem 'postgre'
+   gem 'postgres'
 end
 
