@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'json','>=1.8.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,22 +38,28 @@ gem 'execjs'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-end
 
-group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-    gem 'sqlite3'
-
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'therubyracer'
+
+  gem 'execjs'
+  gem 'rspec-rails'
+  gem 'autotest'
+  gem 'sqlite3'
+
 end
- group :production do 
-   gem 'rspec','>=3.3.0'
-   gem 'postgres'
+
+group :production do
+  gem 'pg' # for Heroku deployment
+  gem 'rails_12factor'
 
 end
 
