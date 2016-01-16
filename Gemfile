@@ -35,7 +35,7 @@ gem 'therubyracer'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rspec'
+gem 'rspec','>=3.3.0'
 group :development, :test do
 
   
