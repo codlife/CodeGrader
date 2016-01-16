@@ -35,7 +35,7 @@ gem 'therubyracer'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'rspec'
 group :development, :test do
 
   
@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'autotest'
   gem 'sqlite3'
+
 
 end
 
