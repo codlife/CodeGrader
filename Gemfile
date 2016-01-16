@@ -50,6 +50,6 @@ end
  group :production do 
    gem 'rspec','>=3.3.0'
 
-   gem 'postgres'
+   gem 'postgres','0.7.9.2008.01.28'
 end
 
