@@ -50,6 +50,6 @@ end
  group :production do 
    gem 'rspec','>=3.3.0'
 
-   gem 'postgres'
+   gem 'sqlite3'
 end
 
