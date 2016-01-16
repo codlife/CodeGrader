@@ -51,7 +51,7 @@ group :development do
 end
  group :production do 
    gem 'rspec','>=3.3.0'
-   gem 'pg'
+   gem 'postgres'
 
 end
 
