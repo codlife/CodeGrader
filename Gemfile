@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.org'
 
 gem 'json','>=1.8.3'
 
@@ -50,6 +50,6 @@ end
  group :production do 
    gem 'rspec','>=3.3.0'
 
-   gem 'pg'
+   gem 'postgres'
 end
 
