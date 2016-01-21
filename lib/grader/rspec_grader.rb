@@ -46,6 +46,7 @@ require_relative '../formatter/json_points_formatter'
         points_max += example[:points]
         points += example[:points] if example[:status] == 'passed'
     end
+
       
     rescue Exception => e
       puts "RSpec::Core::Runner encountered #{e.to_s}"
@@ -58,10 +59,12 @@ require_relative '../formatter/json_points_formatter'
     else
       {raw_score: points, raw_max: 100, comments: e.to_s}
     end
-
-    puts
-
-    return output_hash
+    puts('abcd')
+    puts(points )
+     
+    puts("*******************")
+    # output_hash['total_point']=points.to_s
+    return [output_hash,points]
   end
 
 #end
