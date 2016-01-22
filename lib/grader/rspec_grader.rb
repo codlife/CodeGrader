@@ -59,12 +59,9 @@ require_relative '../formatter/json_points_formatter'
     else
       {raw_score: points, raw_max: 100, comments: e.to_s}
     end
-    puts('abcd')
-    puts(points )
      
-    puts("*******************")
-    # output_hash['total_point']=points.to_s
-    return [output_hash,points]
+    
+    return [output_hash,points/points_max*100]
   end
 
 #end
